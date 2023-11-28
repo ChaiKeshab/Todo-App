@@ -5,8 +5,12 @@ import { useEffect } from 'react';
 import useWindowResolution from '../hooks/useWindowResolution';
 import { IoMdClose } from "react-icons/io";
 import { filterType } from '../data/filterType'
+import { useNavigate } from 'react-router-dom';
+
 
 const Sidebar = () => {
+
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const sidebarStatus = useSelector(state => state.sidebarToggleReducer.isSideBarOpen);
     const activeFilter = useSelector(state => state.filterToggleReducer.filter);
@@ -22,6 +26,16 @@ const Sidebar = () => {
 
     }, [dispatch, isLgScreen, sidebarStatus]);
 
+
+    const handleFilterSwitch = (type) => {
+        if (type === filterType.About) {
+            navigate('/about')
+        } else {
+            navigate('/')
+        }
+
+        dispatch(setFilter(type))
+    }
 
     return (
         <>
@@ -43,27 +57,34 @@ const Sidebar = () => {
                 <div className='flex flex-col gap-2 py-2 items-start justify-start border-y border-gray-200'>
 
                     <Button
-                        onClick={() => dispatch(setFilter(filterType.Todo))}
+                        onClick={() => handleFilterSwitch(filterType.Todo)}
                         label={'Todo'}
                         className={`${activeFilter === filterType.Todo ? 'bg-blue-500 text-white' : 'bg-white text-black hover:bg-blue-400'}
                         w-full text-left py-2 px-6 rounded-full hover:text-white md:text-xl md:py-4 md:px-12`}
                     />
 
                     <Button
-                        onClick={() => dispatch(setFilter(filterType.Completed))}
+                        onClick={() => handleFilterSwitch(filterType.Completed)}
                         label={'Completed'}
                         className={`${activeFilter === filterType.Completed ? 'bg-blue-500 text-white' : 'bg-white text-black hover:bg-blue-400'}
                         w-full text-left py-2 px-6 rounded-full hover:text-white md:text-xl md:py-4 md:px-12`}
                     />
 
                     <Button
-                        onClick={() => dispatch(setFilter(filterType.All))}
+                        onClick={() => handleFilterSwitch(filterType.All)}
                         label={'All'}
                         className={`${activeFilter === filterType.All ? 'bg-blue-500 text-white' : 'bg-white text-black hover:bg-blue-400'}
                         w-full text-left py-2 px-6 rounded-full hover:text-white md:text-xl md:py-4 md:px-12`}
                     />
 
                 </div>
+
+                <Button
+                    onClick={() => handleFilterSwitch(filterType.About)}
+                    label={'About'}
+                    className={`${activeFilter === filterType.About ? 'bg-blue-500 text-white' : 'bg-white text-black hover:bg-blue-400'}
+                    mt-2 w-full text-left py-2 px-6 rounded-full hover:text-white md:text-xl md:py-4 md:px-12`}
+                />
 
             </aside>
 
