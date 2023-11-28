@@ -1,4 +1,5 @@
 import * as ActionTypes from "./actionTypes";
+import { filterType } from '../../data/filterType'
 
 const initialState = {
     todos: []
@@ -22,8 +23,8 @@ const myTodoReducer = (state = initialState, action) => {
                         if (todo.id === id) {
                             return {
                                 ...todo,
-                                title: title ? title : todo.title,
-                                completed: completed ? completed : todo.completed,
+                                title: title !== undefined ? title : todo.title,
+                                completed: completed !== undefined ? completed : todo.completed,
                             };
                         }
                         return todo;
@@ -52,7 +53,17 @@ const myTodoReducer = (state = initialState, action) => {
 
         case ActionTypes.DELETE_ALL:
             {
-                return { ...state, todos: [] }
+                const filter = action.payload
+                let updatedTodos
+                if (filter === filterType.All) {
+                    updatedTodos = []
+                } else if (filter === filterType.Completed) {
+                    updatedTodos = state.todos.filter((todo) => todo.completed === false)
+                    console.log(state.todos[0])
+                } else {
+                    updatedTodos = state.todos.filter((todo) => todo.completed === true)
+                }
+                return { ...state, todos: updatedTodos }
             }
 
 

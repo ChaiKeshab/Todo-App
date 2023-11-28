@@ -1,8 +1,7 @@
 import {
     updateTodo,
     deleteTodo,
-    deleteAll,
-    selectAll
+    deleteAll
 } from './todos/action'
 
 import {
@@ -21,7 +20,6 @@ export {
     updateTodo,
     deleteTodo,
     deleteAll,
-    selectAll,
 
     isModalOpen,
     isModalClose,

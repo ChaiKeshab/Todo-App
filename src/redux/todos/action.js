@@ -11,20 +11,7 @@ export const deleteTodo = (todo) => ({
     payload: todo
 });
 
-export const deleteAll = (todo) => ({
+export const deleteAll = (activeFilter) => ({
     type: ActionTypes.DELETE_ALL,
-    payload: todo
+    payload: activeFilter
 });
-
-export const selectAll = (todo) => ({
-    type: ActionTypes.SELECT_ALL,
-    payload: todo
-});
-
-
-
-
-// export const addTodo = (todo) => ({
-//     type: ActionTypes.CREATE_TODO,
-//     payload: todo,
-// });

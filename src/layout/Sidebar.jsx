@@ -4,18 +4,13 @@ import { Button } from '../components/index';
 import { useEffect } from 'react';
 import useWindowResolution from '../hooks/useWindowResolution';
 import { IoMdClose } from "react-icons/io";
+import { filterType } from '../data/filterType'
 
 const Sidebar = () => {
     const dispatch = useDispatch();
     const sidebarStatus = useSelector(state => state.sidebarToggleReducer.isSideBarOpen);
     const activeFilter = useSelector(state => state.filterToggleReducer.filter);
     const windowSize = useWindowResolution();
-
-    const filterType = {
-        Todo: "Todo",
-        Completed: "Completed",
-        All: "All"
-    };
 
     const isLgScreen = windowSize.width >= 1024 ? true : false
 
@@ -32,7 +27,7 @@ const Sidebar = () => {
         <>
             <aside
                 className={`${sidebarStatus ? "translate-x-0" : "-translate-x-full"} bg-white border-r
-                fixed left-0 p-2 top-0 pb-10 h-screen w-[70%] transform z-20 ease-in-out duration-500 shadow-[2px_3px_5px_rgba(0,0,0,0.3)]
+                absolute left-0 p-2 top-0 pb-10 h-screen w-[70%] transform z-20 ease-in-out duration-500 shadow-[2px_3px_5px_rgba(0,0,0,0.3)]
                 md:w-[40%] md:px-5 lg:w-[500px] lg:sticky lg:shadow-none lg:duration-0 lg:border-gray-300`}
             >
 
