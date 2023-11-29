@@ -39,16 +39,6 @@ const Home = () => {
         staleTime: Infinity
     })
 
-    /**
-     * Integrating apiTodo with local todo:
-     * 
-     * first-time load: apiTodo will be present. 
-     * (say) i removed them and now added my own todos WHICH! will now be stored in redux local storage (redux persist).
-     * when page reload || next time visit, display redux todo BUT! we also got api todo that's gonna join the show
-     * 
-     * IDK who came up with this idea but BRO!!! wtf
-     */
-
 
     useEffect(() => {
         if (isFetched && apiTodos) {
