@@ -22,6 +22,8 @@ const AddTodoModal = ({ modeInfo }) => {
             const id = oldId ? oldId : crypto.randomUUID()
             const completed = oldComplete ? oldComplete : false
 
+            if (!todoData) return
+
             const updatedTodos = {
                 id,
                 title: todoData,
