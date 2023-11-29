@@ -28,7 +28,7 @@ const AddTodoModal = ({ modeInfo }) => {
                 completed
             }
 
-            if (activeFilter === filterType.Completed) {
+            if (activeFilter === filterType.Completed && !modeInfo) {
                 dispatch(setFilter(filterType.Todo))
             }
 
