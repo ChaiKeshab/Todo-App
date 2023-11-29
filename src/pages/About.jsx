@@ -1,10 +1,26 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button } from '../components/index'
+import { filterType } from '../data/filterType'
+import { useDispatch } from "react-redux";
+import { setFilter } from '../redux/index'
 
 const TodoApp = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     return (
         <div className=" flex flex-col h-screen overflow-x-auto w-full pl-3 pb-5 mt-4 md:pl-7">
 
-            <Link to={'/'} className=" px-4 py-2 bg-blue-400 w-fit text-white rounded-md">Home</Link>
+            <Button
+                onClick={() => {
+                    navigate('/')
+                    dispatch(setFilter(filterType.Todo))
+                }}
+
+                className=" px-4 py-2 bg-blue-400 w-fit text-white rounded-md"
+                label={'Home'}
+            />
 
             <h1 className="text-3xl font-bold mb-4 text-center"># Simple Todo App</h1>
 
