@@ -85,7 +85,7 @@ const Home = () => {
         <>
             <div className="relative flex flex-col h-screen overflow-hidden w-full pl-3 pb-2 md:pl-7">
 
-                <div className={`${isLgScreen ? 'hidden' : 'flex'} h-[10vh] flex items-center py-5 justify-start`}>
+                <div className={`${isLgScreen ? 'hidden' : 'flex'} max-h-[10vh] flex items-center py-5 justify-start`}>
                     <RxHamburgerMenu
                         onClick={() => dispatch(isSideBarOpen())}
                         className={`${isLgScreen ? 'hidden' : 'block'} text-xl hover:cursor-pointer`}
@@ -94,14 +94,14 @@ const Home = () => {
                 </div>
 
 
-                <div className='h-[20vh] p-2 pr-7 w-full border-y border-gray-300'>
+                <div className='h-fit p-2 pr-7 w-full border-y border-gray-300'>
 
                     <Input
                         placeholder={'Search'}
                         value={searchTodo}
                         onChange={(e) => setSearchTodo(e.target.value)}
-                        className='bg-[#F1F1F1] w-full shadow-inner border rounded-md px-4 py-2 h-9
-                        focus:border-gray-400 md:h-12 mt-4'
+                        className='bg-[#F1F1F1] w-full shadow-inner border rounded-md px-4 py-2 max-h-9
+                        focus:border-gray-400 md:max-h-12 mt-4'
                     />
 
                     <div className="flex gap-4">
@@ -115,7 +115,7 @@ const Home = () => {
                             hover:bg-green-400 md:text-xl md:px-3 md:py-2"
                             label={'Add'}
                         >
-                            <FaPlus className="text-base text-white md:text-2xl" />
+                            <FaPlus className="text-base text-white md:text-xl" />
                         </Button>
 
 
@@ -125,7 +125,7 @@ const Home = () => {
                             hover:bg-rose-400 md:text-xl md:px-3 md:py-2"
                             label={'Delete All'}
                         >
-                            <FaMinus className="text-base text-white md:text-2xl" />
+                            <FaMinus className="text-base text-white md:text-xl" />
                         </Button>
 
                     </div>
